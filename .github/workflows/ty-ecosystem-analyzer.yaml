@@ -59,7 +59,7 @@ jobs:
     strategy:
       matrix:
         revision: [base, pr]
-    runs-on: ${{ github.repository == 'astral-sh/ruff' && 'github-ubuntu-24.04-x86_64-32' || 'ubuntu-latest' }}
+    runs-on: xenoci-2vcpu-ubuntu-2404
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -147,7 +147,7 @@ jobs:
     strategy:
       matrix:
         shard: [0, 1, 2, 3]
-    runs-on: ${{ github.repository == 'astral-sh/ruff' && 'github-ubuntu-24.04-x86_64-32' || 'ubuntu-latest' }}
+    runs-on: xenoci-2vcpu-ubuntu-2404
     timeout-minutes: 10
     env:
       EXCLUDE_NEWER: ${{ github.event.pull_request.updated_at }}
@@ -215,7 +215,7 @@ jobs:
   generate-report:
     name: Generate diagnostic diff report
     needs: [analyze-shards]
-    runs-on: ${{ github.repository == 'astral-sh/ruff' && 'github-ubuntu-24.04-x86_64-4' || 'ubuntu-latest' }}
+    runs-on: xenoci-2vcpu-ubuntu-2404
     timeout-minutes: 5
     steps:
       - name: Install the latest version of uv

@@ -32,7 +32,7 @@ env:
 jobs:
   build:
     if: ${{ !contains(github.event.pull_request.labels.*.name, 'no-build') }}
-    runs-on: ${{ github.repository == 'astral-sh/ruff' && 'github-ubuntu-24.04-x86_64-4' || 'ubuntu-latest' }}
+    runs-on: xenoci-2vcpu-ubuntu-2404
     strategy:
       matrix:
         target: [web, bundler, nodejs]
